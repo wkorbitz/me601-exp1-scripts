@@ -1,0 +1,27 @@
+%% EIS Supplementary
+
+scan10 = [20 50 100 200 500];
+Ipc = [-51.043 -71.640 -92.446 -127.423 -183.128];
+Ipa = [28.099 51.561 56.732 62.13 79.856];
+
+Epa = [0.2826 0.2926 0.3027 0.3128 0.333];
+Epc = [0.1514 0.1413 0.1211 0.1009 0.0605];
+
+skiprows = 0;
+eis_sca
+data = readmatrix(filename,'NumHeaderLines',skipRows);
+
+figure(1)
+plot(sqrt(scan10), abs(Ipc),'b-o')
+hold on
+plot(sqrt(scan10),abs(Ipa),'r-o')
+xlabel('Square root of scan rate [(mV/s)^{1/2}]','Interpreter','tex'); 
+ylabel('Peak Current [\muA]','Interpreter','tex');
+legend('Cathodic current I_{p,c}','Anodic current I_{p,a}','Interpreter','tex');
+
+figure(2)
+plot(scan10,Epa,'r-o')
+hold on
+plot(scan10,Epc,'b-o')
+xlabel('Scan rate [mV/s]'); ylabel('Peak Potential [mV]');
+legend('Anodic peak E_{pa}','Cathodic peak E_{pc}','Interpreter','tex');
